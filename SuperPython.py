@@ -7,8 +7,10 @@ class PythonSuperComplete(sublime_plugin.EventListener):
     def on_activated(self, view):
         settings = view.settings()
         self.tab_size = settings.get('tab_size')
+        print('activated', self.tab_size)
 
     def on_query_completions(self, view, prefix, locations):
+        print('query completions')
         if 'source.python' not in view.scope_name(locations[0]):
             # Work only in python source
             return
